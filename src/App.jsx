@@ -39,62 +39,92 @@ const data = [
 
 export default function App() {
   return (
-    <div style={{height:"100%"}}>
-     
-     <div style={{height:"50vh", backgroundColor:"red"}}></div>
+    <div>
 
-    <div style={styles.container}>
-      {data.map((item, index) => (
-        <section key={item.serialNumber}  style={{
+      <div style={styles.placeholder}></div>
+
+      <div style={styles.container}>
+        {data.map((item, index) => (
+          <section key={item.serialNumber} style={{
             ...styles.section,
-            top: `${75 * index}px`, 
-            // top: "375px" 
+            top: `${75 * index}px`,
           }}
+          >
+            <div style={styles.sectionContent}>
+              <div style={styles.numberContainer}>
+                <span style={styles.sectionNumber}>{item.serialNumber}</span>
+              </div>
+              <div style={styles.textContainer}>
+                <h2 style={styles.heading}>{item.heading}</h2>
+                <p style={styles.paragraph}>{item.description}</p>
+              </div>
+              <div style={styles.graphicContainer}>
+                <div style={styles.iconBackground}>
+                  <span style={styles.singleIcon}>{item.iconImage}</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        ))}
+
+        {/* links mimick kar raha hai aori.io ki tarah */}
+        <section style={{
+          ...styles.section,
+        }}
         >
           <div style={styles.sectionContent}>
             <div style={styles.numberContainer}>
-              <span style={styles.sectionNumber}>{item.serialNumber}</span>
+              <span style={styles.sectionNumber}>/LINKS.</span>
             </div>
             <div style={styles.textContainer}>
-              <h2 style={styles.heading}>{item.heading}</h2>
-              <p style={styles.paragraph}>{item.description}</p>
+              <h2 style={styles.heading}></h2>
+              <p style={styles.paragraph}></p>
             </div>
             <div style={styles.graphicContainer}>
-              <div style={styles.iconBackground}>
-                <span style={styles.singleIcon}>{item.iconImage}</span>
+              <div style={{
+                width: "150px",
+                height: "150px",
+              }}>
+                <span style={styles.singleIcon}></span>
               </div>
             </div>
           </div>
         </section>
-      ))}
-    </div>
 
-     {/* <div style={{height:"150vh", backgroundColor:"red"}}></div> */}
-     <div style={{height:"500px", backgroundColor:"green"}}></div>
+      </div>
+
+      {/* ye placeholders required hai scroll spaces ke liye */}
+      <div style={styles.placeholder}></div>
+      <div style={styles.placeholder}></div>
     </div>
   )
 }
 
 
 const styles = {
-container: {
-  backgroundColor: "#000",
-  color: "#fff",
-  fontFamily: "Arial, sans-serif",
-  height: "100vh",
-  padding: "0",
-  display: "flex",
+  placeholder: {
+    height: "75vh",
+    backgroundColor: "green",
+    position: "static"
+  },
+  container: {
+    backgroundColor: "#000",
+    color: "#fff",
+    fontFamily: "Arial, sans-serif",
+    padding: "0",
+    display: "flex",
     position: "relative",
-  height: "auto",
-  top: "0px",
-  flexDirection: "column",
-},
-section: {
-  position: "sticky",
-  padding: "40px 20px",
-  borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-  backgroundColor: "black",
-},
+    // height: "200vh",     // yaha be change kiya that, but required nahi hai // agar links nahi chahiye to isse uncomment aur links ko comment kar sakta hai
+    height: "auto",
+    top: "0px",
+    flexDirection: "column",
+  },
+  section: {
+    position: "sticky",
+    padding: "40px 20px",
+    borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+    backgroundColor: "black",
+  },
   sectionContent: {
     display: "flex",
     flexDirection: "row",
